@@ -1,0 +1,8 @@
+<!ELEMENT alojamientos(alojamiento)+>
+	<!ELEMENT alojamiento(cif,direccion,telefono,habitaciones?)>
+		<!ATTLIST alojamiento tipo (hotel|hostal|casarural) #REQUIRED>
+		<!ELEMENT habitaciones(habitacion)+>
+			<!ELEMENT habitacion(precio,estado)>
+				<!ATTLIST habitacion id CDATA #REQUIRED>
+				<!ELEMENT precio (#PCDATA)>
+				<!ATTLIST estado est CDATA #REQUIRED>

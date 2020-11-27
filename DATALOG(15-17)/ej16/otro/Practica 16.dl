@@ -1,0 +1,94 @@
+%
+% Practica 16
+%
+
+%
+% Hechos
+%
+
+
+% Libros
+% libros(Titulo, Isbn, Autor, Tema, Anyo, Editorial, Precio, Unidades).
+libros(libro1,1,guillermo,tema1,2019,ucm,5,20).
+libros(libro2,2,alberto,tema2,2018,ucm,20,5).
+libros(libro3,3,gabriel,tema3,2015,vallecas,50,3).
+libros(libro4,4,daniel,tema4,2010,ucm,20,10).
+libros(libro5,5,carlos,tema5,1978,galileo,30,15).
+
+% Clientes
+% clientes(Nombre,Nif,Num-pedido).
+clientes(guillermo,1,1).
+clientes(daniel,2,2).
+clientes(mario,3,3).
+clientes(miguel_angel,4,4).
+clientes(jorge,5,5).
+
+% Pedidos
+% pedidos(Num-pedido,Dia,Mes,Anyo,Isbn,Unidades).
+pedidos(1,1,5,2019,3,1).
+pedidos(2,2,5,2019,1,1).
+pedidos(3,3,5,2019,5,1).
+pedidos(4,4,5,2019,3,1).
+pedidos(5,5,5,2019,1,1).
+pedidos(5,5,5,2018,1,1).
+
+%
+% Reglas
+%
+
+%Libros de un autor dado.
+regla_1(Titulo,Autor) :- libros(Titulo,_,Autor,_,_,_,_,_).
+
+%Libros "caros" (precio mayor de 40 euros).
+regla_2(Titulo) :- libros(Titulo,_,_,_,_,_,Precio,_), Precio>40.
+
+%Libros casi agotados (menos de 10 unidades).
+regla_3(Titulo) :- libros(Titulo,_,_,_,_,_,_,Unidades), Unidades<10.
+
+%Libros antiguos (anteriores a 1980).
+regla_4(Titulo) :- libros(Titulo,_,_,_,Anyo,_,_,_), Anyo<1980.
+
+%Libros comprados por cada cliente (especifica solo el titulo).
+regla_5(Cliente,Titulo) :- clientes(Cliente,_,Pedido), pedidos(Pedido,_,_,_,Isbn,_), libros(Titulo,Isbn,_,_,_,_,_,_).
+
+%Libros comprados por cliente por año.
+regla_6(Cliente,Anyo,Titulo) :- clientes(Cliente,_,Pedido), pedidos(Pedido,_,_,Anyo,Isbn,_), libros(Titulo,Isbn,_,_,_,_,_,_).
+
+%Libros comprados por cliente por titulo.
+regla_7(Cliente,Titulo) :- clientes(Cliente,_,Pedido), pedidos(Pedido,_,_,_,Isbn,_), libros(Titulo,Isbn,_,_,_,_,_,_).
+
+%Ingresos por venta por año.
+%regla_8b(Anyo,Total) :-  pedidos(_,_,_,Anyo,Isbn,Unidades), libros(_,Isbn,_,_,_,_,Precio,_), Total is Unidades * Precio.
+%regla_8c(Anyo,Total_ingreso) :- group_by(regla_8b(Anyo,Total),[],Total_ingreso=sum(Total)).
+regla_8(Anyo,Total_ingreso) :- sum(pedidos(_,_,_,Anyo,Isbn,Unidades), libros(_,Isbn,_,_,_,_,Precio,_), Unidades * Precio,Total_ingreso).
+
+%Ingresos por venta por libro.
+%regla_9b(Titulo,Total) :-  pedidos(_,_,_,_,Isbn,Unidades), libros(Titulo,Isbn,_,_,_,_,Precio,_), Total is Unidades * Precio.
+%regla_9c(Titulo,Total_ingreso) :- group_by(regla_9b(Titulo,Total),[],Total_ingreso=sum(Total)).
+regla_9(Titulo,Total_ingreso) :- sum(pedidos(_,_,_,_,Isbn,Unidades), libros(Titulo,Isbn,_,_,_,_,Precio,_), Unidades * Precio,Total_ingreso).
+
+%Ingresos por venta por libro y año.
+%regla_10b(Titulo,Anyo,Total) :-  pedidos(_,_,_,Anyo,Isbn,Unidades), libros(Titulo,Isbn,_,_,_,_,Precio,_), Total is Unidades * Precio.
+%regla_10(Titulo,Anyo,Total_ingreso) :- group_by(regla_10b(Titulo,Anyo,Total),[],Total_ingreso=sum(Total)).
+regla_9(Titulo,Anyo,Total_ingreso) :- sum(pedidos(_,_,_,Anyo,Isbn,Unidades), libros(Titulo,Isbn,_,_,_,_,Precio,_), Unidades * Precio,Total_ingreso).
+
+%Todos los pedidos y su fecha.
+regla_11(Pedido,Dia,Mes,Anyo) :- pedidos(Pedido,Dia,Mes,Anyo,_,_).
+
+%Numero de pedidos por año.
+regla_11b(Anyo,Num_pedidos) :- count(pedidos(Pedido,_,_,Anyo,_,_),Pedido,Num_pedidos).
+
+%Ingresos por tema y año.
+%regla_12b(Tema,Anyo,Total) :-  pedidos(_,_,_,Anyo,Isbn,Unidades), libros(_,Isbn,_,Tema,_,_,Precio,_), Total is Unidades * Precio.
+%regla_12c(Tema,Anyo,Total_ingreso) :- group_by(regla_12b(Tema,Anyo,Total),[],Total_ingreso=sum(Total)).
+regla_12(Tema,Anyo,Total_ingreso) :- sum(pedidos(_,_,_,Anyo,Isbn,Unidades), libros(_,Isbn,_,Tema,_,_,Precio,_), Unidades * Precio, Total_ingreso).
+
+%Ingresos por editorial y año
+%regla_13b(Editorial,Anyo,Total) :-  pedidos(_,_,_,Anyo,Isbn,Unidades), libros(_,Isbn,_,_,_,Editorial,Precio,_), Total is Unidades * Precio.
+%regla_13c(Editorial,Anyo,Total_ingreso) :- group_by(regla_13b(Editorial,Anyo,Total),[],Total_ingreso=sum(Total)).
+regla_13(Editorial,Anyo,Total_ingreso) :- sum(pedidos(_,_,_,Anyo,Isbn,Unidades), libros(_,Isbn,_,_,_,Editorial,Precio,_), Unidades * Precio, Total_ingreso).
+
+%Ingresos por titulo
+%regla_14b(Titulo,Total) :-  pedidos(_,_,_,_,Isbn,Unidades), libros(Titulo,Isbn,_,_,_,Editorial,Precio,_), Total is Unidades * Precio.
+%regla_14c(Titulo,Total_ingreso) :- group_by(regla_14b(Titulo,Total),[],Total_ingreso=sum(Total)).
+regla_14(Titulo,Total_ingreso) :- sum(pedidos(_,_,_,Anyo,Isbn,Unidades), libros(Titulo,Isbn,_,_,_,_,Precio,_), Unidades * Precio, Total_ingreso).

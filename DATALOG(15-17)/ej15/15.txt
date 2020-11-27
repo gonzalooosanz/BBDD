@@ -1,0 +1,23 @@
+padre(lucas,andres).
+hijo(lucas,pepe).
+hijo(lucas,juan).
+hijo(lucas,maria).
+hijo(lucas,ana).
+hijo(juan,blas).
+hijo(juan,rosa).
+
+edad(lucas,44).
+edad(andres,67).
+edad(pepe,22).
+edad(maria,19).
+edad(ana,15).
+mujer(maria).
+mujer(ana).
+hombre(pepe).
+
+mayor_17(N,E) :- edad(N,E), E>17.
+es_padre_de(Y,X) :- padre(X,Y);  hijo(Y,X).
+son_hermanos(X,Y) :- hijo(R, X), hijo(R,Y), (X \= Y).
+hermana_de(Y,X) :- hijo(R, X), hijo(R,Y), mujer(Y), (X \= Y).
+hermano_de(Y,X) :- hijo(R, X), hijo(R,Y), hombre(Y), (X \= Y).
+tio_de(Y,X) :- es_padre_de(R,X), son_hermanos(R,Y).

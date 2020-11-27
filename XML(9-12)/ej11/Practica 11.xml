@@ -1,0 +1,69 @@
+<alojamientos>
+
+	<alojamiento tipo="hotel">
+	
+		<cif>1</cif>
+		<direccion>Calle falsa 1</direccion>
+		<telefono>9000000</telefono>
+		
+		<habitaciones>
+		
+			<habitacion id="1">
+				<precio>20</precio>
+				<estado est="disponible"></estado>
+			</habitacion>
+			
+			<habitacion id="2">
+				<precio>40</precio>
+				<estado est="ocupada"></estado>
+			</habitacion>
+			
+		</habitaciones>
+		
+	</alojamiento>
+	
+	<alojamiento tipo="hotel">
+	
+		<cif>2</cif>
+		<direccion>Calle falsa 2</direccion>
+		<telefono>9000000</telefono>
+		
+		<habitaciones>
+		
+			<habitacion id="1">
+				<precio>20</precio>
+				<estado est="disponible"></estado>
+			</habitacion>
+			
+			<habitacion id="2">
+				<precio>40</precio>
+				<estado est="ocupada"></estado>
+			</habitacion>
+			
+		</habitaciones>
+		
+	</alojamiento>
+	
+	<alojamiento tipo="hotel">
+	
+		<cif>3</cif>
+		<direccion>Calle falsa 3</direccion>
+		<telefono>9000000</telefono>
+		
+		<habitaciones>
+		
+			<habitacion id="1">
+				<precio>20</precio>
+				<estado est="disponible"></estado>
+			</habitacion>
+			
+			<habitacion id="2">
+				<precio>40</precio>
+				<estado est="ocupada"></estado>
+			</habitacion>
+			
+		</habitaciones>
+		
+	</alojamiento>
+	
+</alojamientos>

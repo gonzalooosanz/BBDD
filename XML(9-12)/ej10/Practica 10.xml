@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE planetas SYSTEM "Practica 10.dtd">
+<planetas>
+
+	<planeta>
+		<nombre>Tierra</nombre>
+		<diametro>7500</diametro>
+		<masa>0.9</masa>
+		<satelites>
+			<satelite>
+				<nombre>Luna</nombre>
+			</satelite>
+		</satelites>
+	</planeta>
+	
+	<planeta>
+		<nombre>Marte</nombre>
+		<diametro>500</diametro>
+		<masa>0.9</masa>
+		<satelites>
+		
+			<satelite>
+				<nombre>Fobos</nombre>
+			</satelite>
+			
+			<satelite>
+				<nombre>Deimos</nombre>
+			</satelite>
+			
+		</satelites>
+	</planeta>
+	
+	<planeta>
+		<nombre>Jupiter</nombre>
+		<diametro>70500</diametro>
+		<masa>1.5</masa>
+	</planeta>
+	
+	<planeta>
+		<nombre>Saturno</nombre>
+		<diametro>80500</diametro>
+		<masa>2</masa>
+	</planeta>
+	
+	<planeta>
+		<nombre>Neptuno</nombre>
+		<diametro>5500</diametro>
+		<masa>4</masa>
+	</planeta>
+	
+</planetas>

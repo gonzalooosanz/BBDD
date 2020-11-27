@@ -1,0 +1,43 @@
+1. Crea la base de datos videoclub.
+	use videoclub
+	
+2. Crea la coleccion peliculas.
+	db.createCollection('peliculas')
+	
+3. Inserta documentos que representen a peliculas. Campos a tener en cuenta: titulo, año de estreno, actores y genero.
+	db.peliculas.insert({"titulo": "Matrix", "estreno":1999, "actores": "Neo", "genero":"accion"})
+	
+4. Actualiza la pelicula de titulo "Matrix" con la siguiente informacion.
+	db.peliculas.update({"titulo":"Matrix"},{$set:{"tipo":"DVD"}})
+	
+5. Consideraremos tambien libros.
+	db.peliculas.insert({"tipo": "Libro", "titulo":"Constantinopla", "capitulos": 12, "leidos":3})
+	
+6. Añadirla a la coleccion e incrementar en cinco unidades el valor de la clave leidos.
+	db.peliculas.update({"titulo":"Constantinopla"},{$inc:{"leidos":5}})
+	
+7. Actualizar el documento referido a la pelicula Matrix cambiando el valor de la clave genero a ciencia ficcion.
+	db.peliculas.update({"titulo":"Matrix"},{$set:{"genero":"ciencia ficcion"}})
+	
+8. Actualiza el documento referido a la pelicula Matrix añadiendo al array actores los valores de Antonio Banderas y Brad Pitt en una unica operacion.
+	db.peliculas.update({"titulo":"Matrix"},{$set:{"actores":["Antonio Banderas","Brad Pitt"]}})
+	
+9. Actualizar el documento referido a la pelicula Matrix añadiendo al array actores los valores Joe Pantoliano y Natalie Portman.
+	db.peliculas.update({"titulo":"Matrix"},{$push:{"actores":"Joe Pantoliano"}})
+	db.peliculas.update({"titulo":"Matrix"},{$push:{"actores":"Natalie Portman"}})
+	
+10. Actualizar el documento de la pelicula Matrix eliminando del array el primer y ultimo actor.
+	db.peliculas.update({"titulo":"Matrix"},{$pop:{"actores":1}})
+	db.peliculas.update({"titulo":"Matrix"},{$pop:{"actores":-1}})
+	
+11. Actualiza el documento referido a la pelicula "Matrix" añadiendo al array "actores" los valores "Joe Pantoliano" y "Antonio Banderas".
+	db.peliculas.update({"titulo":"Matrix"},{$push:{"actores":"Joe Pantoliano"}})
+	db.peliculas.update({"titulo":"Matrix"},{$push:{"actores":"Antonio Banderas"}})
+	
+12. Actualizar el documento referido a la pelicula "Matrix" eliminando todas las apariciones en el array "actores" de los valores "Joe Pantoliano" y "Antonio Banderas".
+	db.peliculas.update({"titulo":"Matrix"},{$pull:{"actores":"Antonio Banderas"}})
+	db.peliculas.update({"titulo":"Matrix"},{$pull:{"actores":"Joe Pantoliano"}})
+	
+13. Actualizar el documento referido al disco "Recuerdos" y añadir una nueva cancion al array "canciones".
+
+14. Actualizar el documento referido al disco "Recuerdos" de manera que la cancion "El atardecer" tenga asignado el umero 3 en vez del 5.

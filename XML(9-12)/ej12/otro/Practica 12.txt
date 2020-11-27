@@ -1,0 +1,70 @@
+1. State y Country de aquellos clientes con tarjeta bronce.
+	for $cliente in /SALES/CUSTOMERS
+	where $cliente/CUSTOMERNUMBER/@card="bronce"
+	return <resultado>
+	<STATE>{data($cliente/ADDRESS/STATE)}</STATE>
+	<COUNTRY>{data($cliente/ADDRESS/STATE)}</COUNTRY>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <STATE>Madrid</STATE>
+	   <COUNTRY>Madrid</COUNTRY>
+	</resultado>
+	
+2. Numero de pedidos y Nombre de Cliente (CUSTOMERNAME) por cada cliente que tenga tarjeta silver.
+	for $cliente in /SALES/CUSTOMERS
+	where $cliente/CUSTOMERNUMBER/@card="silver"
+	return <resultado>
+	<CUSTOMERNAME>{data($cliente/CUSTOMERNAME)}</CUSTOMERNAME>
+	<Numero_pedidos>{count($cliente/ORDERS/ORDER)}</Numero_pedidos>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <CUSTOMERNAME>Cliente 2</CUSTOMERNAME>
+	   <Numero_pedidos>3</Numero_pedidos>
+	</resultado>
+	
+3. Identificador de Clientes (id) con tarjeta tipo gold o silver y con limite de credito (CREDITLIMIT) superior a 20.000 euros.//ver
+	for $cliente in /SALES/CUSTOMERS
+	where $cliente/CUSTOMERNUMBER/@card="silver" or "gold" and $cliente/CREDITLIMIT > "20000"
+	return <resultado>
+	<id>{data($cliente/CUSTOMERNUMBER/@id)}</id>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <id>1</id>
+	</resultado>
+	<resultado>
+	   <id>2</id>
+	</resultado>
+	<resultado>
+	   <id>3</id>
+	</resultado>
+	
+4. Importe total de los pedidos en estado cerrados (closed) por cada cliente.
+	for $cliente in /SALES/CUSTOMERS
+	return <resultado>
+	<id>{data($cliente/CUSTOMERNUMBER/@id)}</id>
+	{
+	for $pedidos in $cliente/ORDERS/ORDER
+	where some $pedido in $pedidos satisfies $pedido/@status="closed"
+	return <importe_total>{data($pedidos/PRICE)}</importe_total>
+	}
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <id>1</id>
+	   <importe_total>30</importe_total>
+	</resultado>
+	<resultado>
+	   <id>2</id>
+	   <importe_total>30</importe_total>
+	</resultado>
+	<resultado>
+	   <id>3</id>
+	   <importe_total>30</importe_total>
+	</resultado>

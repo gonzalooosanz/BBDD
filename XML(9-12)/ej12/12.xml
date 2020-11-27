@@ -1,0 +1,55 @@
+<!DOCTYPE sales [
+<!ELEMENT sales (customers)>
+<!ELEMENT customers (customernumber, customername, contactlastname, contacfirstname, phone, address, salesrepemployeenumber, creditlimit, orders)>
+	<!ELEMENT customernumber EMPTY>
+	<!ELEMENT customername (#PCDATA)>
+	<!ELEMENT contactlastname (#PCDATA)>
+	<!ELEMENT contacfirstname (#PCDATA)>
+	<!ELEMENT phone (#PCDATA)>
+
+	<!ELEMENT address (addressline1, addressline2?, city, state?, postalcode, country)>
+		<!ELEMENT addressline1 (#PCDATA)>
+		<!ELEMENT addressline2 (#PCDATA)>
+		<!ELEMENT city (#PCDATA)>
+		<!ELEMENT state (#PCDATA)>
+		<!ELEMENT postalcode (#PCDATA)>
+		<!ELEMENT country (#PCDATA)>
+
+	<!ELEMENT salesrepemployeenumber (#PCDATA)>
+	<!ELEMENT creditlimit (#PCDATA)>
+
+	<!ELEMENT orders (order+)>
+		<!ELEMENT order (price)>
+			<!ELEMENT price (#PCDATA)>
+
+<!ATTLIST customernumber id CDATA #REQUIRED card (silver | gold | bronce) #REQUIRED>
+<!ATTLIST order number CDATA #REQUIRED status (pending | open | closed) #REQUIRED currency (pounds | euros | dollars) #REQUIRED>
+]>
+
+<sales>
+    <customers>
+        <customernumber id="123" card="silver"/>
+        <customername>pepe</customername>
+        <contactlastname>viyuela</contactlastname>
+        <contacfirstname>caranton</contacfirstname>
+        <phone>3245234</phone>
+        <address>
+            <addressline1>calle fuencarral</addressline1>
+            <city>madrid</city>
+            <state>tuvieja</state>
+            <postalcode>29382</postalcode>
+            <country>espania</country>
+        </address>
+        <salesrepemployeenumber>234</salesrepemployeenumber>
+        <creditlimit>3000</creditlimit>
+        <orders>
+            <order number="34" status="closed" currency="euros">
+                <price>11</price>
+            </order>
+            
+            <order number="33" status="closed" currency="euros">
+                <price>51</price>
+            </order>
+        </orders>
+    </customers>
+</sales>

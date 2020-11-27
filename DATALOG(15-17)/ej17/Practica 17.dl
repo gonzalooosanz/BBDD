@@ -1,0 +1,30 @@
+%
+% Practica 17
+%
+
+%
+% Funciones logicas
+%
+
+% Maximo de dos numeros
+maximo(X,Y,X) :- X >= Y.
+maximo(X,Y,Y) :- X < Y.
+
+% Factorial de un numero
+fatorial(1,1).
+factorial(X,Y) :- X > 1, X1 is X-1, factorial(X1,Y1), Y is X * Y1.
+
+% Una funcion que determine si todos los elementos de una lista son menores que cierto valor dado
+
+% Maximo de una lista de numeros.
+max_lista([X],X).
+max_lista([X1,X2|L],Y) :- X3 is max(X1,X2), max_lista([X3|L],Y).
+
+% Suma de los valores de una lista.
+suma_lista([],0).
+suma_lista([X|L],Y) :- suma_lista(L,Y1), Y is X+Y1.
+
+% Una funcion que determine si una lista esta ordenada crecientemente o no.
+ordenada([_]).
+ordenada([X,Y|L]) :- X =< Y, ordenada([Y|L]).
+

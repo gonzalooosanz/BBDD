@@ -1,0 +1,20 @@
+libros(hola, 112, jacinto, fantansia, 1993, planeta, 12, 43).
+libros(lolailo, 100, pepe, rol, 1941, norma, 48, 16).
+
+clientes(joseluis, 2819, 32).
+clientes(joseluis, 2819, 64).
+clientes(paquito, 2419, 64).
+
+pedidos(0032, 4, 1, 2012, 112, 4).
+pedidos(0064, 2, 4, 2016, 100, 8).
+
+
+libros_autor(Autor, Libro) :- libros(Libro, _, Autor, _, _, _, _, _).
+libros_caros(Libro, Precio) :- libros(Libro, _, _, _, _, _, Precio, _), Precio > 40.
+libros_casi_agotados(Libro, Unidades) :- libros(Libro, _, _, _, _, _, _, Unidades), Unidades < 10.
+
+
+ingresos_titulo(Libro, Ingresos) :- pedidos(_, _, _, _, Isbn, Unidades), libros(Libro, Isbn, _, _, _, _, Precio, _), Ingresos is Precio*Unidades.
+
+ingresos_libro_ano(Isbn,Editorial, Ano, Inglib) :- libros(_, Isbn, _, _, _, Editorial, Precio, _), pedidos(_, _, _, Ano, Isbn,  Unidades), Inglib is Precio*Unidades.
+ingresos_editorial_ano(Editorial, Ano, Ingresos) :-  group_by( ingresos_libro_ano(Isbn, Ano, Editorial, Inglib),[Editorial, Ano], Ingresos = sum(Inglib)).

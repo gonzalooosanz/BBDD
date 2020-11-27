@@ -1,0 +1,41 @@
+1. Muestra un listado de todos los nombres de planetas cuya masa sea mayor que 1 con el siguiente formato:
+	for $x in /planetas/planeta
+	where $x/masa >1
+	return $x/nombre
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<nombre>Jupiter</nombre>
+	<nombre>Saturno</nombre>
+	<nombre>Neptuno</nombre>
+	
+2. Muestra un listado de todos los nombres de planetas y los nombres de sus satelites con el siguiente formato:
+	for $x in /planetas/planeta
+	return <resultado>
+		<plan>{data($x/nombre)}</plan>
+		{
+		for $y in $x/satelites/satelite
+		return <nom>{data($y/nombre)}</nom>
+		}
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <plan>Tierra</plan>
+	   <nom>Luna</nom>
+	</resultado>
+	<resultado>
+	   <plan>Marte</plan>
+	   <nom>Fobos</nom>
+	   <nom>Deimos</nom>
+	</resultado>
+	<resultado>
+	   <plan>Jupiter</plan>
+	</resultado>
+	<resultado>
+	   <plan>Saturno</plan>
+	</resultado>
+	<resultado>
+	   <plan>Neptuno</plan>
+	</resultado>
+
+	

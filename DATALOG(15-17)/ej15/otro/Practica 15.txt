@@ -1,0 +1,59 @@
+DES> regla_1(X) 
+
+{
+  regla_1(andres),
+  regla_1(lucas),
+  regla_1(maria),
+  regla_1(pepe)
+}
+
+DES> regla_2(X,Y) 
+
+{
+  regla_2(lucas,andres)
+}
+
+DES> regla_3(X,Y) 
+
+{
+  regla_3(ana,juan),
+  regla_3(ana,maria),
+  regla_3(ana,pepe),
+  regla_3(blas,rosa),
+  regla_3(juan,ana),
+  regla_3(juan,maria),
+  regla_3(juan,pepe),
+  regla_3(maria,ana),
+  regla_3(maria,juan),
+  regla_3(maria,pepe),
+  regla_3(pepe,ana),
+  regla_3(pepe,juan),
+  regla_3(pepe,maria),
+  regla_3(rosa,blas)
+}
+
+DES> regla_4(X,Y) 
+
+{
+  regla_4(ana,maria),
+  regla_4(juan,ana),
+  regla_4(juan,maria),
+  regla_4(maria,ana),
+  regla_4(pepe,ana),
+  regla_4(pepe,maria)
+}
+
+DES> regla_5(X,Y) 
+
+{
+  regla_5(ana,pepe),
+  regla_5(juan,pepe),
+  regla_5(maria,pepe)
+}
+
+DES> regla_6(X,Y) 
+
+{
+  regla_6(blas,pepe),
+  regla_6(rosa,pepe)
+}

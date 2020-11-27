@@ -1,0 +1,48 @@
+//1
+use videoclub
+
+//2
+db.createCollection("peliculas")
+
+//3
+db.peliculas.insert({"tipo":"dvd","titulo":"Fargo","estreno":1996,"actores":["Maria","Luisa"],"genero":"thriller"})
+db.peliculas.insert({"tipo":"blu_ray","titulo":"Matrix","estreno":1995,"genero":"thriller"})
+
+//4
+db.peliculas.update({titulo:"Matrix"},{"tipo":"dvd","titulo":"Matrix","estreno":1999,"genero":"accion"})
+
+//5
+db.createCollection("libros")
+db.libros.insert({"tipo":"Libro","titulo":"Constatinopla","capitulos":12,"leidos":3})
+
+//6
+db.libros.update({"titulo":"Constatinopla"}, {"$inc": {"leidos":5}})
+
+//7
+var mat = db.peliculas.findOne({"titulo":"Matrix"})
+mat.genero="ciencia_ficcion"
+db.peliculas.update({"titulo": "Matrix"}, mat)
+
+//8
+db.peliculas.update({"titulo":"Matrix"},{"$push" : {"actores" : "Antonio Banderas"}})
+db.peliculas.update({"titulo":"Matrix"},{"$push" : {"actores" : "Brad Pitt"}})
+
+//9
+db.peliculas.update({"titulo":"Matrix"},{"$push" : {"actores" : "Joe Pantoliano"}})
+db.peliculas.update({"titulo":"Matrix"},{"$push" : {"actores" : "Natalie Portman"}})
+
+//10
+db.peliculas.update({"titulo":"Matrix"},{"$pop":{"actores": -1}})
+db.peliculas.update({"titulo":"Matrix"},{"$pop":{"actores": 1}})
+
+//11
+db.peliculas.update({"titulo":"Matrix"},{$push : {"actores": "Joe Pantoliano"}})
+db.peliculas.update({"titulo":"Matrix"},{$push : {"actores": "Antonio Banderas"}})
+
+//12
+db.peliculas.update({"titulo":"Matrix"},{$pull:{"actores":"Joe Pantoliano"}})
+db.peliculas.update({"titulo":"Matrix"},{$pull:{"actores":"Antonio Banderas"}})
+
+
+//para borrar atributos
+db.peliculas.update({"titulo":"Matrix"},{"$unset" : {"actores" : 1}})

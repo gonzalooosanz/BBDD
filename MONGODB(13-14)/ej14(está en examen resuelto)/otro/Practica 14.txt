@@ -1,0 +1,16 @@
+1. Crea la base de datos astronomia y la coleccion planetas. Inserta, ademas, la siguiente informacion.
+	use astronomia
+	db.createCollection('planetas')
+	db.planetas.insert({"_id":1,"nombre":"P111","masa":1.9,"volumen":3,"composicion":"H","perihelio":0.5})
+	db.planetas.insert({"_id":2,"nombre":"P222","masa":3.1,"volumen":4.5,"composicion":"O","perihelio":0.07,"afelio":1.7,"satelites":["S111","S222","S333"]})
+	db.planetas.insert({"_id":3,"nombre":"S111","masa":0.2})
+	db.planetas.insert({"_id":4,"nombre":"S222","masa":0.3,"volumen":1.1})
+	db.planetas.insert({"_id":5,"nombre":"S333","volumen":0.02})
+	db.planetas.insert({"_id":6,"nombre":"C111","masa":0.05,"composicion":"H","perihelio":0.01,"afelio":25})
+	db.planetas.insert({"_id":7,"nombre":"P333","masa":3.8,"volumen":4.9,"composicion":"He"})
+	
+2. Muestra por pantalla unicamente los nombres de aquellos objetos que tengan en la composicion H o N o bien su masa sea mayor que 3.2. La consulta, que solo se realizara una vez, debe ser eficiente.
+	db.planetas.find({$or:[{"composicion":{$in:["H","N"]}},{"masa":{$gt:3.2}}]})
+	
+3. Actualiza el nombre de C111 a Z111.
+	db.planetas.update({"_id":6},{$set:{"nombre":"Z111"}})

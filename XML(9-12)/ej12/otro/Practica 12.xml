@@ -1,0 +1,114 @@
+<SALES>
+	<CUSTOMERS>
+	
+		<CUSTOMERNUMBER id="1" card="bronce"></CUSTOMERNUMBER>
+		<CUSTOMERNAME>Cliente 1</CUSTOMERNAME>
+		<CUSTOMERLASTNAME>Cliente 1</CUSTOMERLASTNAME>
+		<CUSTOMERFIRSNAME>Cliente 1</CUSTOMERFIRSNAME>
+		<PHONE>9100000</PHONE>
+		
+		<ADDRESS>
+			<ADDRESSLINE1>Calle Falsa 1</ADDRESSLINE1>
+			<ADDRESSLINE2>Calle Falsa 2</ADDRESSLINE2>
+			<CITY>Madrid</CITY>
+			<STATE>Madrid</STATE>
+			<POSTALCODE>28019</POSTALCODE>
+			<COUNTRY>España</COUNTRY>
+		</ADDRESS>
+		
+		<SALESREPEMPLOYEENUMBER>1</SALESREPEMPLOYEENUMBER>
+		<CREDITLIMIT>30000</CREDITLIMIT>
+		
+		<ORDERS>
+		
+			<ORDER number="1" status="pending" currency="pounds">
+				<PRICE>10</PRICE>
+			</ORDER>
+			
+			<ORDER number="2" status="open" currency="euros">
+				<PRICE>20</PRICE>
+			</ORDER>
+			
+			<ORDER number="1" status="closed" currency="dollars">
+				<PRICE>30</PRICE>
+			</ORDER>
+			
+		</ORDERS>
+		
+	</CUSTOMERS>
+	
+	<CUSTOMERS>
+	
+		<CUSTOMERNUMBER id="2" card="silver"></CUSTOMERNUMBER>
+		<CUSTOMERNAME>Cliente 2</CUSTOMERNAME>
+		<CUSTOMERLASTNAME>Cliente 2</CUSTOMERLASTNAME>
+		<CUSTOMERFIRSNAME>Cliente 2</CUSTOMERFIRSNAME>
+		<PHONE>9100000</PHONE>
+		
+		<ADDRESS>
+			<ADDRESSLINE1>Calle Falsa 1</ADDRESSLINE1>
+			<CITY>Madrid</CITY>
+			<STATE>Madrid</STATE>
+			<POSTALCODE>28019</POSTALCODE>
+			<COUNTRY>España</COUNTRY>
+		</ADDRESS>
+		
+		<SALESREPEMPLOYEENUMBER>1</SALESREPEMPLOYEENUMBER>
+		<CREDITLIMIT>30000</CREDITLIMIT>
+		
+		<ORDERS>
+		
+			<ORDER number="1" status="pending" currency="pounds">
+				<PRICE>10</PRICE>
+			</ORDER>
+			
+			<ORDER number="2" status="open" currency="euros">
+				<PRICE>20</PRICE>
+			</ORDER>
+			
+			<ORDER number="1" status="closed" currency="dollars">
+				<PRICE>30</PRICE>
+			</ORDER>
+			
+		</ORDERS>
+		
+	</CUSTOMERS>
+	
+	<CUSTOMERS>
+	
+		<CUSTOMERNUMBER id="3" card="gold"></CUSTOMERNUMBER>
+		<CUSTOMERNAME>Cliente 3</CUSTOMERNAME>
+		<CUSTOMERLASTNAME>Cliente 3</CUSTOMERLASTNAME>
+		<CUSTOMERFIRSNAME>Cliente 3</CUSTOMERFIRSNAME>
+		<PHONE>9100000</PHONE>
+		
+		<ADDRESS>
+			<ADDRESSLINE1>Calle Falsa 1</ADDRESSLINE1>
+			<CITY>Madrid</CITY>
+			<STATE>Madrid</STATE>
+			<POSTALCODE>28019</POSTALCODE>
+			<COUNTRY>España</COUNTRY>
+		</ADDRESS>
+		
+		<SALESREPEMPLOYEENUMBER>1</SALESREPEMPLOYEENUMBER>
+		<CREDITLIMIT>30000</CREDITLIMIT>
+		
+		<ORDERS>
+		
+			<ORDER number="1" status="pending" currency="pounds">
+				<PRICE>10</PRICE>
+			</ORDER>
+			
+			<ORDER number="2" status="open" currency="euros">
+				<PRICE>20</PRICE>
+			</ORDER>
+			
+			<ORDER number="1" status="closed" currency="dollars">
+				<PRICE>30</PRICE>
+			</ORDER>
+			
+		</ORDERS>
+		
+	</CUSTOMERS>
+	
+</SALES>

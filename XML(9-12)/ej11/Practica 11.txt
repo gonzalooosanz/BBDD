@@ -1,0 +1,91 @@
+1. El nombre de cada hotel con su telefono
+	for $hotel in /alojamientos/alojamiento
+	where $hotel/@tipo="hotel"
+	return <resultado>
+		<cif>{data($hotel/cif)}</cif>
+		<telefono>{data($hotel/telefono)}</telefono>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <cif>1</cif>
+	   <telefono>9000000</telefono>
+	</resultado>
+	<resultado>
+	   <cif>2</cif>
+	   <telefono>9000000</telefono>
+	</resultado>
+	<resultado>
+	   <cif>3</cif>
+	   <telefono>9000000</telefono>
+	</resultado>
+	
+2. Nombre del hotel y numero de habitaciones
+	for $hotel in /alojamientos/alojamiento
+	where $hotel/@tipo="hotel"
+	return <resultado>
+		<cif>{data($hotel/cif)}</cif>
+		<numero_habitaciones>{count($hotel/habitaciones/habitacion)}</numero_habitaciones>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <cif>1</cif>
+	   <numero_habitaciones>2</numero_habitaciones>
+	</resultado>
+	<resultado>
+	   <cif>2</cif>
+	   <numero_habitaciones>2</numero_habitaciones>
+	</resultado>
+	<resultado>
+	   <cif>3</cif>
+	   <numero_habitaciones>2</numero_habitaciones>
+	</resultado>
+
+3. Para cada hotel, el precio minimo de sus habitaciones y maximo
+	for $hotel in /alojamientos/alojamiento
+	where $hotel/@tipo="hotel"
+	return <resultado>
+		<cif>{data($hotel/cif)}</cif>
+		<precio_minimo>{min($hotel/habitaciones/habitacion)}</precio_minimo>
+		<precio_maximo>{max($hotel/habitaciones/habitacion)}</precio_maximo>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <cif>1</cif>
+	   <precio_minimo>20</precio_minimo>
+	   <precio_maximo>40</precio_maximo>
+	</resultado>
+	<resultado>
+	   <cif>2</cif>
+	   <precio_minimo>20</precio_minimo>
+	   <precio_maximo>40</precio_maximo>
+	</resultado>
+	<resultado>
+	   <cif>3</cif>
+	   <precio_minimo>20</precio_minimo>
+	   <precio_maximo>40</precio_maximo>
+	</resultado>
+
+4. El nombre y el telefono de los hoteles con habitaciones libres.
+	for $hotel in /alojamientos/alojamiento
+	where some $habitacion in $hotel/habitaciones/habitacion satisfies $habitacion/estado/@est="disponible"
+	return <resultado>
+	<cif>{data($hotel/cif)}</cif>
+	<telefono>{data($hotel/telefono)}</telefono>
+	</resultado>
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+	<resultado>
+	   <cif>1</cif>
+	   <telefono>9000000</telefono>
+	</resultado>
+	<resultado>
+	   <cif>2</cif>
+	   <telefono>9000000</telefono>
+	</resultado>
+	<resultado>
+	   <cif>3</cif>
+	   <telefono>9000000</telefono>
+	</resultado>
